@@ -107,7 +107,7 @@ public class LevelGeneration : MonoBehaviour
                 return Vector2.right;
         }
     }
-
+    //creates floor on the grid
     void CreateFloors()
     {
         int iterations = 0;

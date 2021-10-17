@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//move velocity using rigidbody
 public class MoveVelocity : MonoBehaviour, IMovement
 {
+    //move speed set in editor
     [SerializeField] private float moveSpeed;
-
+    
     private Vector3 velocityVector;
     private Rigidbody2D rigidbody2D;
-
-    // Start is called before the first frame update
+    
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
