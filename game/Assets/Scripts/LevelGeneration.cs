@@ -7,7 +7,7 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     //determines what type of object is set to appear on certain location
-    enum LevelTile { empty, floor, wall, player};
+    enum LevelTile { Empty, Floor, Wall, Player};
     //theoretical grid of tiles
     private LevelTile[,] grid;
     //walker structure
@@ -78,7 +78,7 @@ public class LevelGeneration : MonoBehaviour
         {
             for (int y = 0; y < levelHeight - 1; y++)
             {
-                grid[x, y] = LevelTile.empty;
+                grid[x, y] = LevelTile.Empty;
             }
         }
 
@@ -116,7 +116,7 @@ public class LevelGeneration : MonoBehaviour
             //create floor at position of every Walker
             foreach (RandomWalker walker in walkers)
             {
-                grid[(int)walker.pos.x, (int)walker.pos.y] = LevelTile.floor;
+                grid[(int)walker.pos.x, (int)walker.pos.y] = LevelTile.Floor;
             }
 
             //chance: destroy Walker
@@ -172,7 +172,7 @@ public class LevelGeneration : MonoBehaviour
             }
 
             //check to exit loop
-            if ((float)NumberOfFloors() / (float)grid.Length > percentToFill)
+            if (NumberOfFloors() / (float)grid.Length > percentToFill)
             {
                 break;
             }
@@ -186,7 +186,7 @@ public class LevelGeneration : MonoBehaviour
         int count = 0;
         foreach (LevelTile space in grid)
         {
-            if (space == LevelTile.floor)
+            if (space == LevelTile.Floor)
             {
                 count++;
             }
@@ -201,7 +201,7 @@ public class LevelGeneration : MonoBehaviour
         {
             for (int y = 0; y < levelHeight - 1; y++)
             {
-                if (grid[x, y] == LevelTile.empty) grid[x, y] = LevelTile.wall;
+                if (grid[x, y] == LevelTile.Empty) grid[x, y] = LevelTile.Wall;
             }
         }
     }
@@ -215,12 +215,12 @@ public class LevelGeneration : MonoBehaviour
             {
                 switch (grid[x, y])
                 {
-                    case LevelTile.empty:
+                    case LevelTile.Empty:
                         break;
-                    case LevelTile.floor:
+                    case LevelTile.Floor:
                         Spawn(x, y, floorTile);
                         break;
-                    case LevelTile.wall:
+                    case LevelTile.Wall:
                         Spawn(x, y, wallTile);
                         break;
                 }
@@ -234,7 +234,7 @@ public class LevelGeneration : MonoBehaviour
         Vector3 pos = new Vector3(Mathf.RoundToInt(levelWidth / 2.0f),
                                         Mathf.RoundToInt(levelHeight / 2.0f));
         GameObject playerObj = Instantiate(player, pos, Quaternion.identity);
-        grid[levelWidth / 2, levelHeight / 2] = LevelTile.player;
+        grid[levelWidth / 2, levelHeight / 2] = LevelTile.Player;
         CinemachineVirtualCamera vCam = virtualCamera.GetComponent<CinemachineVirtualCamera>();
         vCam.m_Follow = playerObj.transform.GetChild(0);
     }
