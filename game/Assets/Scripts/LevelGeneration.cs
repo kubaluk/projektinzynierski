@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,9 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     //determines what type of object is set to appear on certain location
-    enum LevelTile { empty, floor, wall};
+    enum LevelTile { Empty, Floor, Wall, Player};
     //theoretical grid of tiles
-    LevelTile[,] grid;
+    private LevelTile[,] grid;
     //walker structure
     struct RandomWalker
     {
@@ -16,30 +17,47 @@ public class LevelGeneration : MonoBehaviour
         public Vector2 pos;
     }
     //list of walkers
-    List<RandomWalker> walkers;
+    private List<RandomWalker> walkers;
 
     //floor tile prefab
     [SerializeField]
-    public GameObject floorTile;
+    private GameObject floorTile;
     //wall tile prefab
     [SerializeField]
-    public GameObject wallTile;
+    private GameObject wallTile;
     //level width in tiles
-    public int levelWidth;
+    [SerializeField]
+    private int levelWidth;
     //level height in tiles
-    public int levelHeight;
+    [SerializeField]
+    private int levelHeight;
     //level percent to fill
-    public float percentToFill = 0.2f;
+    [SerializeField]
+    private float percentToFill = 0.2f;
     //chance for a walker to change direction
-    public float chanceWalkerChangeDir = 0.5f;
+    [SerializeField]
+    private float chanceWalkerChangeDir = 0.5f;
     //chance for additional walker to spawn
-    public float chanceWalkerSpawn = 0.05f;
+    [SerializeField]
+    private float chanceWalkerSpawn = 0.05f;
     //chance for a walker to get destroyed
-    public float chanceWalkerDestoy = 0.05f;
+    [SerializeField]
+    private float chanceWalkerDestoy = 0.05f;
     //max number of walkers
-    public int maxWalkers = 10;
+    [SerializeField]
+    private int maxWalkers = 10;
     //iteration steps
-    public int iterationSteps = 100000;
+    [SerializeField]
+    private int iterationSteps = 100000;
+    //player prefab
+    [SerializeField]
+    private GameObject player;
+    //camera object to connect to player
+    [SerializeField]
+    private GameObject virtualCamera;
+    //map object
+    [SerializeField]
+    private GameObject mapObject;
 
     //create the level
     void Start()
@@ -48,6 +66,7 @@ public class LevelGeneration : MonoBehaviour
         CreateFloors();
         CreateWalls();
         SpawnLevel();
+        SpawnPlayer();
     }
 
     //set up the walker alorithm
@@ -59,7 +78,7 @@ public class LevelGeneration : MonoBehaviour
         {
             for (int y = 0; y < levelHeight - 1; y++)
             {
-                grid[x, y] = LevelTile.empty;
+                grid[x, y] = LevelTile.Empty;
             }
         }
 
@@ -97,7 +116,7 @@ public class LevelGeneration : MonoBehaviour
             //create floor at position of every Walker
             foreach (RandomWalker walker in walkers)
             {
-                grid[(int)walker.pos.x, (int)walker.pos.y] = LevelTile.floor;
+                grid[(int)walker.pos.x, (int)walker.pos.y] = LevelTile.Floor;
             }
 
             //chance: destroy Walker
@@ -153,7 +172,7 @@ public class LevelGeneration : MonoBehaviour
             }
 
             //check to exit loop
-            if ((float)NumberOfFloors() / (float)grid.Length > percentToFill)
+            if (NumberOfFloors() / (float)grid.Length > percentToFill)
             {
                 break;
             }
@@ -167,7 +186,7 @@ public class LevelGeneration : MonoBehaviour
         int count = 0;
         foreach (LevelTile space in grid)
         {
-            if (space == LevelTile.floor)
+            if (space == LevelTile.Floor)
             {
                 count++;
             }
@@ -182,7 +201,7 @@ public class LevelGeneration : MonoBehaviour
         {
             for (int y = 0; y < levelHeight - 1; y++)
             {
-                if (grid[x, y] == LevelTile.empty) grid[x, y] = LevelTile.wall;
+                if (grid[x, y] == LevelTile.Empty) grid[x, y] = LevelTile.Wall;
             }
         }
     }
@@ -196,12 +215,12 @@ public class LevelGeneration : MonoBehaviour
             {
                 switch (grid[x, y])
                 {
-                    case LevelTile.empty:
+                    case LevelTile.Empty:
                         break;
-                    case LevelTile.floor:
+                    case LevelTile.Floor:
                         Spawn(x, y, floorTile);
                         break;
-                    case LevelTile.wall:
+                    case LevelTile.Wall:
                         Spawn(x, y, wallTile);
                         break;
                 }
@@ -209,9 +228,21 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
+    //spawn player in the center of stage
+    void SpawnPlayer()
+    {
+        Vector3 pos = new Vector3(Mathf.RoundToInt(levelWidth / 2.0f),
+                                        Mathf.RoundToInt(levelHeight / 2.0f));
+        GameObject playerObj = Instantiate(player, pos, Quaternion.identity);
+        grid[levelWidth / 2, levelHeight / 2] = LevelTile.Player;
+        CinemachineVirtualCamera vCam = virtualCamera.GetComponent<CinemachineVirtualCamera>();
+        vCam.m_Follow = playerObj.transform.GetChild(0);
+    }
+
     //spawn an object in certain location
     void Spawn(float x, float y, GameObject toSpawn)
     {
-        Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity);
+        GameObject newObject = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity);
+        newObject.transform.parent = mapObject.transform;
     }
 }
