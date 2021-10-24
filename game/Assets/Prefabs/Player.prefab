@@ -227,7 +227,7 @@ MonoBehaviour:
   state: 1
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 7692085404824383335}
-  swapTime: 1
+  swapTime: 0.5
   playerSprite: {fileID: 7566386627926967265}
 --- !u!58 &2433948259984169898
 CircleCollider2D:
@@ -468,7 +468,7 @@ MonoBehaviour:
   state: 0
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 4659780289930155260}
-  swapTime: 1
+  swapTime: 0.5
   playerSprite: {fileID: 18535751926576304}
 --- !u!58 &4271401056051790993
 CircleCollider2D:

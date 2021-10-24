@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject otherCharacter;
     [SerializeField] private float swapTime;
     [SerializeField] private GameObject playerSprite;
+    private Vector3 swapStartPos;
     private Renderer spriteRenderer;
     private float t;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
             previousState = state;
             spriteRenderer.sortingOrder = (int) state;
             state = PlayerState.Swap;
+            swapStartPos = transform.localPosition;
             t = 0;
         }
     }
@@ -30,7 +32,8 @@ public class PlayerController : MonoBehaviour
     private void Swap()
     {
         t += Time.deltaTime;
-        if (t / swapTime < 1)
+        float divided = t / swapTime;
+        if (divided <= 1.0f)
         {
             switch (previousState)
             {
@@ -38,7 +41,7 @@ public class PlayerController : MonoBehaviour
                     transform.position = movePoint.transform.position;
                     break;
                 case PlayerState.Follow:
-                    transform.localPosition = Vector3.Lerp(transform.localPosition,movePoint.transform.localPosition, t/swapTime);
+                    transform.localPosition = Vector3.Lerp(swapStartPos,movePoint.transform.localPosition, divided);
                     break;
             }
         }
