@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerState state;
     private PlayerState previousState;
+    
     [SerializeField] private GameObject movePoint;
     [SerializeField] private GameObject otherCharacter;
     [SerializeField] private float swapTime;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 swapStartPos;
     private Renderer spriteRenderer;
     private float t;
+    [SerializeField]private float targetDistance;
 
     private void OnSwapButton()
     {
@@ -58,6 +60,9 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -65,8 +70,19 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = playerSprite.GetComponent<Renderer>();
         t = 0;
     }
-    
-    
+
+    private Vector3 GetFollowIntent()
+    {
+        Vector3 intention = Vector3.zero;
+        Vector3 localPosition = this.transform.localPosition;
+        Vector3 otherPosition = otherCharacter.transform.localPosition;
+        Vector3 direction = otherPosition - localPosition;
+        float distance = Vector3.Distance(localPosition, otherPosition);
+        
+        var springStrength = (distance - targetDistance);
+        intention += direction * springStrength;
+        return intention.magnitude < 0.5f ? Vector3.zero : intention.normalized;
+    }
 
     // Update is called once per frame
     private void Update()
@@ -77,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = movePoint.transform.position;
                 break;
             case PlayerState.Follow:
-                //TODO: following script
+                GetComponent<IMovement>().SetVelocity(GetFollowIntent());
                 break;
             case PlayerState.Swap:
                 Swap();

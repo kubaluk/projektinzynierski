@@ -447,7 +447,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9479495, y: 1}
+    m_SensorSize: {x: 1.9148265, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -502,8 +502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorTile: {fileID: 5618673769371266985, guid: fba8c7e0e5d8b764b88a3be687a9ebb8, type: 3}
   wallTile: {fileID: 6191741904100731896, guid: ab7010169f3662349aa59b65d42ce18f, type: 3}
-  levelWidth: 50
-  levelHeight: 50
+  levelWidth: 75
+  levelHeight: 75
   percentToFill: 0.2
   chanceWalkerChangeDir: 0.5
   chanceWalkerSpawn: 0.05
