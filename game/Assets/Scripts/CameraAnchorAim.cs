@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CameraAnchorAim : MonoBehaviour, ICameraAnchor
 {
+    //object that should be followed by camera
     [SerializeField] private GameObject anchoredObject;
+    //limits how far camera can go from character
     [SerializeField] private float reachLimit;
-
+    //position of anchor point
     private Vector3 anchorPosition;
     private Vector3 tmpAnchor;
+    //sets new position for anchor point
     public void SetPosition(Vector3 position)
     {
         Vector3 anchoredObjectPosition = anchoredObject.GetComponent<Transform>().position;
