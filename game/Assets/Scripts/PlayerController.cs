@@ -7,18 +7,19 @@ public class PlayerController : MonoBehaviour
 {
     private enum PlayerState{Active, Follow, Swap};
 
-    [SerializeField] private PlayerState state;
-    private PlayerState previousState;
-    
+    [SerializeField] private PlayerState state ;
     [SerializeField] private GameObject movePoint;
     [SerializeField] private GameObject otherCharacter;
     [SerializeField] private float swapTime;
     [SerializeField] private GameObject playerSprite;
+    [SerializeField]private float targetDistance;
+    
+    private PlayerState previousState;
     private Vector3 swapStartPos;
     private Renderer spriteRenderer;
+    private IAttack attackMode;
     private float t;
-    [SerializeField]private float targetDistance;
-
+    
     private void OnSwapButton()
     {
         if (state != PlayerState.Swap)
@@ -53,9 +54,11 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerState.Active:
                     state = PlayerState.Follow;
+                    attackMode.Toggle(false);
                     break;
                 case PlayerState.Follow:
                     state = PlayerState.Active;
+                    attackMode.Toggle(true);
                     break;
             }
         }
@@ -68,6 +71,9 @@ public class PlayerController : MonoBehaviour
     {
         EventSystem.Current.ONSwapButtonPressed += OnSwapButton;
         spriteRenderer = playerSprite.GetComponent<Renderer>();
+        attackMode = GetComponent<IAttack>();
+        if(state==PlayerState.Active)attackMode.Toggle(true);
+        else attackMode.Toggle(false);
         t = 0;
     }
 

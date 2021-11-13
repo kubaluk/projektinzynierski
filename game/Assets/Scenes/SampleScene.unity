@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 2061545806}
   - component: {fileID: 2061545805}
   m_Layer: 0
-  m_Name: KeyboardEventInvoker
+  m_Name: InputEventInvoker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
