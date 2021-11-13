@@ -1,5 +1,4 @@
 using Cinemachine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,14 +6,14 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     //determines what type of object is set to appear on certain location
-    enum LevelTile { Empty, Floor, Wall, Player};
+    private enum LevelTile { Empty, Floor, Wall, Player};
     //theoretical grid of tiles
     private LevelTile[,] grid;
     //walker structure
     struct RandomWalker
     {
-        public Vector2 dir;
-        public Vector2 pos;
+        public Vector2 Dir;
+        public Vector2 Pos;
     }
     //list of walkers
     private List<RandomWalker> walkers;
@@ -66,6 +65,7 @@ public class LevelGeneration : MonoBehaviour
         CreateFloors();
         CreateWalls();
         SpawnLevel();
+        SpawnBorder();
         SpawnPlayer();
     }
 
@@ -74,9 +74,9 @@ public class LevelGeneration : MonoBehaviour
     {
         // prepare grid
         grid = new LevelTile[levelWidth, levelHeight];
-        for (int x = 0; x < levelWidth - 1; x++)
+        for (int x = 0; x < levelWidth; x++)
         {
-            for (int y = 0; y < levelHeight - 1; y++)
+            for (int y = 0; y < levelHeight; y++)
             {
                 grid[x, y] = LevelTile.Empty;
             }
@@ -85,9 +85,9 @@ public class LevelGeneration : MonoBehaviour
         //generate first walker
         walkers = new List<RandomWalker>();
         RandomWalker walker = new RandomWalker();
-        walker.dir = RandomDirection();
+        walker.Dir = RandomDirection();
         Vector2 pos = new Vector2(Mathf.RoundToInt(levelWidth / 2.0f), Mathf.RoundToInt(levelHeight / 2.0f));
-        walker.pos = pos;
+        walker.Pos = pos;
         walkers.Add(walker);
     }
 
@@ -116,7 +116,7 @@ public class LevelGeneration : MonoBehaviour
             //create floor at position of every Walker
             foreach (RandomWalker walker in walkers)
             {
-                grid[(int)walker.pos.x, (int)walker.pos.y] = LevelTile.Floor;
+                grid[(int)walker.Pos.x, (int)walker.Pos.y] = LevelTile.Floor;
             }
 
             //chance: destroy Walker
@@ -136,7 +136,7 @@ public class LevelGeneration : MonoBehaviour
                 if (Random.value < chanceWalkerChangeDir)
                 {
                     RandomWalker thisWalker = walkers[i];
-                    thisWalker.dir = RandomDirection();
+                    thisWalker.Dir = RandomDirection();
                     walkers[i] = thisWalker;
                 }
             }
@@ -148,8 +148,8 @@ public class LevelGeneration : MonoBehaviour
                 if (Random.value < chanceWalkerSpawn && walkers.Count < maxWalkers)
                 {
                     RandomWalker walker = new RandomWalker();
-                    walker.dir = RandomDirection();
-                    walker.pos = walkers[i].pos;
+                    walker.Dir = RandomDirection();
+                    walker.Pos = walkers[i].Pos;
                     walkers.Add(walker);
                 }
             }
@@ -158,7 +158,7 @@ public class LevelGeneration : MonoBehaviour
             for (int i = 0; i < walkers.Count; i++)
             {
                 RandomWalker walker = walkers[i];
-                walker.pos += walker.dir;
+                walker.Pos += walker.Dir;
                 walkers[i] = walker;
             }
 
@@ -166,8 +166,8 @@ public class LevelGeneration : MonoBehaviour
             for (int i = 0; i < walkers.Count; i++)
             {
                 RandomWalker walker = walkers[i];
-                walker.pos.x = Mathf.Clamp(walker.pos.x, 1, levelWidth - 2);
-                walker.pos.y = Mathf.Clamp(walker.pos.y, 1, levelHeight - 2);
+                walker.Pos.x = Mathf.Clamp(walker.Pos.x, 1, levelWidth - 2);
+                walker.Pos.y = Mathf.Clamp(walker.Pos.y, 1, levelHeight - 2);
                 walkers[i] = walker;
             }
 
@@ -197,9 +197,9 @@ public class LevelGeneration : MonoBehaviour
     //create walls around floors 
     void CreateWalls()
     {
-        for (int x = 0; x < levelWidth - 1; x++)
+        for (int x = 0; x < levelWidth; x++)
         {
-            for (int y = 0; y < levelHeight - 1; y++)
+            for (int y = 0; y < levelHeight; y++)
             {
                 if (grid[x, y] == LevelTile.Empty) grid[x, y] = LevelTile.Wall;
             }
@@ -226,6 +226,33 @@ public class LevelGeneration : MonoBehaviour
                 }
             }
         }
+    }
+
+    //spawn a border around level to prevent falling out of the map
+    void SpawnBorder()
+    {
+        //create a square of walls around map
+        for (int i = -1; i < levelWidth+1; i++)
+        {
+            Spawn(i, -1, wallTile);
+            Spawn(i, levelHeight, wallTile);
+        }
+        for (int i = -1; i < levelHeight+1; i++)
+        {
+            Spawn(-1, i, wallTile);
+            Spawn(levelWidth, i, wallTile);
+        }
+
+        //set a camera collider on the border
+        PolygonCollider2D cameraBorder = mapObject.GetComponent<PolygonCollider2D>();
+        Vector2[] points = new Vector2[4];
+        points[0] = new Vector2(-1, -1);
+        points[1] = new Vector2(levelWidth, -1);
+        points[2] = new Vector2(levelWidth, levelHeight);
+        points[3] = new Vector2(-1, levelHeight);
+        cameraBorder.SetPath(0,points);
+        CinemachineConfiner confiner = virtualCamera.GetComponent<CinemachineConfiner>();
+        confiner.m_BoundingShape2D = cameraBorder;
     }
 
     //spawn player in the center of stage
