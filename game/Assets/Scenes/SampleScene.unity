@@ -875,7 +875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 182, y: -55.8}
+  m_AnchoredPosition: {x: 183.7, y: -57.594}
   m_SizeDelta: {x: 149.6656, y: 26.830994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921198990
@@ -893,6 +893,7 @@ MonoBehaviour:
   slider: {fileID: 921198991}
   stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
   blackoutSquare: {fileID: 653286056}
+  swapCooldown: 1
 --- !u!114 &921198991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,6 +1150,7 @@ MonoBehaviour:
   slider: {fileID: 1246936749}
   stats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
   blackoutSquare: {fileID: 416357088}
+  swapCooldown: 1
 --- !u!114 &1246936749
 MonoBehaviour:
   m_ObjectHideFlags: 0

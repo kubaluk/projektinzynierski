@@ -9,10 +9,18 @@ public class HealthBarHandler : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private PlayerStats stats;
     [SerializeField] private Image blackoutSquare;
+    [SerializeField] private float swapCooldown;
 
+    private float currentCooldown;
     public void Start()
     {
         EventSystem.Current.ONSwapButtonPressed += SwapBars;
+        currentCooldown = 0;
+    }
+
+    public void Update()
+    {
+        currentCooldown += Time.deltaTime;
     }
 
     public void SetHealthBar()
@@ -27,7 +35,10 @@ public class HealthBarHandler : MonoBehaviour
 
     private void SwapBars()
     {
-        StartCoroutine(FadeBar(stats.isActive));
+        if(currentCooldown>swapCooldown){
+            StartCoroutine(FadeBar(stats.isActive));
+            currentCooldown = 0;
+        }
     }
 
     private IEnumerator FadeBar(bool isActive, int fadeSpeed = 5)
