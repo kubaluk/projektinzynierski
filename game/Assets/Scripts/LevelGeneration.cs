@@ -218,7 +218,12 @@ public class LevelGeneration : MonoBehaviour
                     case LevelTile.Empty:
                         break;
                     case LevelTile.Floor:
-                        Spawn(x, y, floorTile);
+                        int code = 0;
+                        if (grid[x, y + 1] == LevelTile.Wall) code += 1000;
+                        if (grid[x, y - 1] == LevelTile.Wall) code += 100;
+                        if (grid[x + 1, y] == LevelTile.Wall) code += 1;
+                        if (grid[x - 1, y] == LevelTile.Wall) code += 10;
+                        Spawn(x, y, floorTile, code);
                         break;
                     case LevelTile.Wall:
                         Spawn(x, y, wallTile);
@@ -267,9 +272,13 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //spawn an object in certain location
-    void Spawn(float x, float y, GameObject toSpawn)
+    void Spawn(float x, float y, GameObject toSpawn, int code=1111)
     {
         GameObject newObject = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity);
         newObject.transform.parent = mapObject.transform;
+        if (code != 1111)
+        {
+            newObject.transform.GetChild(0).GetComponent<FloorPicker>().ParseCode(code);
+        }
     }
 }

@@ -20,18 +20,13 @@ public class ProjectilePhysics : MonoBehaviour
     }
 
     //if the projectile hits enemy they take damage, if it hits the wall it only destroys itself
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        /*TODO: enemy class and interface
-         IEnemy enemy = other.GetComponent<IEnemy>();
-        if (enemy != null)
+        IDamageable target = other.GetComponent<IDamageable>();
+        if (target != null)
         {
-            enemy.takeDamage(bulletDamage);
+            target.TakeDamage(bulletDamage);
             Destroy(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }*/
     }
 }
