@@ -478,7 +478,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9514563, y: 1}
+    m_SensorSize: {x: 1.9332273, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -561,6 +561,7 @@ MonoBehaviour:
   player: {fileID: 7169827110085070149, guid: b13715ab8886a0144a58e64a819108ef, type: 3}
   virtualCamera: {fileID: 1585483285}
   mapObject: {fileID: 305848329}
+  tmp: {fileID: 3101101942459002416, guid: 4df8e84904d44314f91e65e909b951a6, type: 3}
 --- !u!4 &1837680232
 Transform:
   m_ObjectHideFlags: 0

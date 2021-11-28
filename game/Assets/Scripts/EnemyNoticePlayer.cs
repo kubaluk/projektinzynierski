@@ -21,14 +21,16 @@ public class EnemyNoticePlayer : MonoBehaviour
     void Start()
     {
         mask=LayerMask.GetMask($"Wall");
-        playerChild = playerObject.transform.GetChild(1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerChild = playerObject.transform.GetChild(1);
         playerLocation = playerChild.localPosition;
         Debug.Log(playerLocation);
+        
         distance = Vector3.Distance(playerLocation, transform.position);
         if (distance < minNoticeDistance)
         {
