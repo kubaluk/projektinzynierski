@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float swapTime;
     [SerializeField] private GameObject playerSprite;
     [SerializeField]private float targetDistance;
-    
+
     private PlayerState previousState;
     private Vector3 swapStartPos;
     private Renderer spriteRenderer;

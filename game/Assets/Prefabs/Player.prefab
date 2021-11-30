@@ -625,6 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5567153546714637927}
   - component: {fileID: 5170614353074206824}
+  - component: {fileID: 661194371295652879}
   - component: {fileID: 358744578564440809}
   - component: {fileID: 5631400002323193822}
   - component: {fileID: 4271401056051790993}
@@ -670,6 +671,19 @@ MonoBehaviour:
   swapTime: 0.5
   playerSprite: {fileID: 18535751926576304}
   targetDistance: 3
+--- !u!114 &661194371295652879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692085404824383335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda526a1c2c9f2840bd79ec336a229e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
 --- !u!114 &358744578564440809
 MonoBehaviour:
   m_ObjectHideFlags: 0
