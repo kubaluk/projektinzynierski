@@ -263,8 +263,9 @@ public class LevelGeneration : MonoBehaviour
         Vector3 pos = new Vector3(Mathf.RoundToInt(levelWidth / 2.0f),
                                         Mathf.RoundToInt(levelHeight / 2.0f));
         GameObject playerObj = Instantiate(player, Vector3.zero, Quaternion.identity);
-        Instantiate(tmp, pos, Quaternion.identity);
+        GameObject testEnemy = Instantiate(tmp, pos, Quaternion.identity);
         playerObj.transform.GetChild(1).localPosition = pos;
+        testEnemy.GetComponent<EnemyNoticePlayer>().AssignPlayer(playerObj.transform);
         grid[levelWidth / 2, levelHeight / 2] = LevelTile.Player;
         CinemachineVirtualCamera vCam = virtualCamera.GetComponent<CinemachineVirtualCamera>();
         vCam.m_Follow = playerObj.transform.GetChild(0);

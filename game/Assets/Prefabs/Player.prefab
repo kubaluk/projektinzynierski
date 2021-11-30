@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 761911595881014207}
   - component: {fileID: 5198061898530184065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5598819614492843008}
   - component: {fileID: 6507903777760724943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1948972542868391947}
   - component: {fileID: 2825541466849209603}
   - component: {fileID: 7554023446082496301}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429732697648363595}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AimPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1832111462040154964}
   - component: {fileID: 2433948259984169898}
   - component: {fileID: 5831842451371431192}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SecondCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 6564653877537207039}
   - component: {fileID: 2037321808}
   - component: {fileID: 2037321809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4959027061665285226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269802217276970421}
   - component: {fileID: 8037225026210526927}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 4271401056051790993}
   - component: {fileID: 6213086399623977078}
   - component: {fileID: 2131724261851008440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirstCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
