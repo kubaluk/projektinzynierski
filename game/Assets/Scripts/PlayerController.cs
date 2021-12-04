@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private enum PlayerState{Active, Follow, Swap};
 
+    [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private PlayerState state ;
     [SerializeField] private GameObject movePoint;
     [SerializeField] private GameObject otherCharacter;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.Active:
                 transform.position = movePoint.transform.position;
+                playerInfo.playerPosition = transform.localPosition;
                 break;
             case PlayerState.Follow:
                 GetComponent<IMovement>().SetVelocity(GetFollowIntent());

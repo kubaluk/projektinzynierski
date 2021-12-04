@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc21f44bc348244a76120e51489422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
   state: 1
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 7692085404824383335}
@@ -665,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc21f44bc348244a76120e51489422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
   state: 0
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 4659780289930155260}
