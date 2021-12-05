@@ -320,13 +320,14 @@ GameObject:
   - component: {fileID: 5216513793826294500}
   - component: {fileID: 7061539859526143227}
   - component: {fileID: 8351013051434926002}
+  - component: {fileID: 3712654402354363450}
   - component: {fileID: 4260138767397064129}
   - component: {fileID: 1832111462040154964}
   - component: {fileID: 2433948259984169898}
   - component: {fileID: 5831842451371431192}
   m_Layer: 7
   m_Name: SecondCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
+  stats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
   state: 1
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 7692085404824383335}
@@ -377,6 +379,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81090761d47da24f8ad9e716a82982a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3712654402354363450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659780289930155260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda526a1c2c9f2840bd79ec336a229e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
 --- !u!114 &4260138767397064129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,12 +429,12 @@ CircleCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.23
 --- !u!50 &5831842451371431192
 Rigidbody2D:
   serializedVersion: 4
@@ -510,7 +525,7 @@ GameObject:
   - component: {fileID: 4959027061665285226}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -634,7 +649,7 @@ GameObject:
   - component: {fileID: 2131724261851008440}
   m_Layer: 7
   m_Name: FirstCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,6 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
+  stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
   state: 0
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 4659780289930155260}
@@ -719,15 +735,15 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7692085404824383335}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.23
 --- !u!114 &6213086399623977078
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class EnemyNoticePlayer : MonoBehaviour
 {
     [SerializeField] private float minNoticeDistance;
 
+    [SerializeField] private float loseDistance;
+
     [SerializeField] private PlayerInfo playerInfo;
     
     private EnemyAggro aggro;
@@ -44,6 +46,11 @@ public class EnemyNoticePlayer : MonoBehaviour
         else
         {
             //Debug.Log("I see nothing");
+        }
+
+        if (Vector3.Distance(transform.position, playerLocation) > loseDistance)
+        {
+            aggro.Toggle(false);
         }
     }
 }

@@ -6,6 +6,8 @@ public class ProjectilePhysics : MonoBehaviour
 {
     //projectile damage dealt to enemies
     int bulletDamage;
+
+    [SerializeField] private string[] tagsToInteract;
     // Start is called before the first frame update
     public void Setup(float flightTime, int damage, float speed)
     {
@@ -22,11 +24,18 @@ public class ProjectilePhysics : MonoBehaviour
     //if the projectile hits enemy they take damage, if it hits the wall it only destroys itself
     private void OnTriggerEnter2D(Collider2D other)
     {
-        IDamageable target = other.GetComponent<IDamageable>();
-        if (target != null)
+        foreach (var tag in tagsToInteract) 
         {
-            target.TakeDamage(bulletDamage);
-            Destroy(gameObject);
+            if (other.CompareTag(tag))
+            {
+                IDamageable target = other.GetComponent<IDamageable>();
+                if (target != null)
+                {
+                    target.TakeDamage(bulletDamage);
+                } 
+                Destroy(gameObject);
+                return;
+            }
         }
     }
 }
