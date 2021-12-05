@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     private enum PlayerState{Active, Follow, Swap};
 
+    [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerState state ;
     [SerializeField] private GameObject movePoint;
     [SerializeField] private GameObject otherCharacter;
@@ -55,10 +57,14 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.Active:
                     state = PlayerState.Follow;
                     attackMode.Toggle(false);
+                    GetComponent<CircleCollider2D>().enabled = false;
+                    stats.isActive = false;
                     break;
                 case PlayerState.Follow:
                     state = PlayerState.Active;
                     attackMode.Toggle(true);
+                    GetComponent<CircleCollider2D>().enabled = true;
+                    stats.isActive = true;
                     break;
             }
         }
@@ -97,6 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.Active:
                 transform.position = movePoint.transform.position;
+                playerInfo.playerPosition = transform.localPosition;
                 break;
             case PlayerState.Follow:
                 GetComponent<IMovement>().SetVelocity(GetFollowIntent());

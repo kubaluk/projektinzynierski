@@ -6,7 +6,11 @@ public class EnemyNoticePlayer : MonoBehaviour
 {
     [SerializeField] private float minNoticeDistance;
 
-    private Transform playerObject;
+    [SerializeField] private float loseDistance;
+
+    [SerializeField] private PlayerInfo playerInfo;
+    
+    private EnemyAggro aggro;
 
     private Vector3 playerLocation;
     
@@ -18,34 +22,35 @@ public class EnemyNoticePlayer : MonoBehaviour
     void Start()
     {
         mask=LayerMask.GetMask($"Wall", "Player");
-    }
-
-    public void AssignPlayer(Transform playerObj)
-    {
-        playerObject = playerObj.GetChild(1);
-        
+        aggro = GetComponent<EnemyAggro>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerLocation = playerObject.localPosition;
+        playerLocation = playerInfo.playerPosition;
         direction = (playerLocation - transform.position).normalized;
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, direction, minNoticeDistance ,mask);
         if (hit2D)
         {
             if (hit2D.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
-                Debug.Log("I see wall");
+                //Debug.Log("I see wall");
             }
             else
             {
-                Debug.Log("I see you");
+                //Debug.Log("I see you");
+                aggro.Toggle(true);
             }
         }
         else
         {
-            Debug.Log("I see nothing");
+            //Debug.Log("I see nothing");
+        }
+
+        if (Vector3.Distance(transform.position, playerLocation) > loseDistance)
+        {
+            aggro.Toggle(false);
         }
     }
 }

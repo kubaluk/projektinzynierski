@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e491424321b0fc45a89cf44622afbaf, type: 3}
   m_Name: Gertha
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   maxHealth: 10
   speed: 10
   isActive: 1

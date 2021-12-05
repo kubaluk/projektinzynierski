@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149a31714dddb8e4bbf3ee9b10bdfaf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToInteract:
+  - Enemy
+  - Wall
 --- !u!50 &2316252493975463828
 Rigidbody2D:
   serializedVersion: 4
@@ -66,7 +69,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5894738368202738438
 BoxCollider2D:
   m_ObjectHideFlags: 0

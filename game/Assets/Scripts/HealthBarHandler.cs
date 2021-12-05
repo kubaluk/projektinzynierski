@@ -21,10 +21,6 @@ public class HealthBarHandler : MonoBehaviour
     public void Update()
     {
         currentCooldown += Time.deltaTime;
-    }
-
-    public void SetHealthBar()
-    {
         slider.value = stats.health;
     }
 
@@ -37,6 +33,7 @@ public class HealthBarHandler : MonoBehaviour
     {
         if(currentCooldown>swapCooldown){
             StartCoroutine(FadeBar(stats.isActive));
+            //stats.isActive = !stats.isActive;
             currentCooldown = 0;
         }
     }
@@ -55,7 +52,7 @@ public class HealthBarHandler : MonoBehaviour
 
                 fadeColor = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeAmount);
                 blackoutSquare.color = fadeColor;
-                stats.isActive = true;
+                
                 yield return null;
             }
         }
@@ -68,7 +65,7 @@ public class HealthBarHandler : MonoBehaviour
 
                 fadeColor = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeAmount);
                 blackoutSquare.color = fadeColor;
-                stats.isActive = false;
+                
                 yield return null;
             }
         }
