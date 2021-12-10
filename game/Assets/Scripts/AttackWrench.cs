@@ -11,7 +11,7 @@ public class AttackWrench : MonoBehaviour, IAttack
     {
         if (!isActive) return;
         var newObject = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
-        newObject.transform.localScale = new Vector3(2, 2, 1);
+        newObject.transform.localScale = new Vector3(3, 3, 1);
         newObject.GetComponent<MeleePhysics>().Setup(0.5f, 3, 1);
     }
 
