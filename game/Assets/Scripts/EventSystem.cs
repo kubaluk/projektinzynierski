@@ -12,6 +12,7 @@ public class EventSystem : MonoBehaviour
 
     public event Action ONSwapButtonPressed;
     public event Action ONAttackButtonPressed;
+    public event Action ONAllEnemiesKilled;
 
     public void SwapButtonPressed()
     {
@@ -21,5 +22,10 @@ public class EventSystem : MonoBehaviour
     public void AttackButtonPressed()
     {
         ONAttackButtonPressed?.Invoke();
+    }
+
+    public void AllEnemiesKilled()
+    {
+        ONAllEnemiesKilled?.Invoke();
     }
 }

@@ -1,12 +1,13 @@
 using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 //class responsible for random level generation
 public class LevelGeneration : MonoBehaviour
 {
     //determines what type of object is set to appear on certain location
-    private enum LevelTile { Empty, Floor, Wall, Player};
+    private enum LevelTile { Empty, Floor, Wall, Player, Enemy};
     //theoretical grid of tiles
     private LevelTile[,] grid;
     //walker structure
@@ -18,38 +19,30 @@ public class LevelGeneration : MonoBehaviour
     //list of walkers
     private List<RandomWalker> walkers;
 
-    //floor tile prefab
     [SerializeField]
+    private LevelProperties properties;
+    
+    //floor tile prefab
     private GameObject floorTile;
     //wall tile prefab
-    [SerializeField]
     private GameObject wallTile;
     //level width in tiles
-    [SerializeField]
     private int levelWidth;
     //level height in tiles
-    [SerializeField]
     private int levelHeight;
     //level percent to fill
-    [SerializeField]
     private float percentToFill = 0.2f;
     //chance for a walker to change direction
-    [SerializeField]
     private float chanceWalkerChangeDir = 0.5f;
     //chance for additional walker to spawn
-    [SerializeField]
     private float chanceWalkerSpawn = 0.05f;
     //chance for a walker to get destroyed
-    [SerializeField]
     private float chanceWalkerDestoy = 0.05f;
     //max number of walkers
-    [SerializeField]
     private int maxWalkers = 10;
     //iteration steps
-    [SerializeField]
     private int iterationSteps = 100000;
     //player prefab
-    [SerializeField]
     private GameObject player;
     //camera object to connect to player
     [SerializeField]
@@ -58,21 +51,51 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField]
     private GameObject mapObject;
 
-    [SerializeField] private GameObject tmp;
+    [SerializeField] 
+    private GameObject aliveEnemies;
+
+    private List<GameObject> enemyTypes;
+
+    private int amountOfEnemies;
+
+    private Vector3 playerPos;
+
+    private List<Vector3Int> floorSpaces;
+
+    //[SerializeField] private GameObject tmp;
 
     //create the level
     void Start()
     {
+        Init();
         Setup();
         CreateFloors();
         CreateWalls();
         SpawnLevel();
         SpawnBorder();
         SpawnPlayer();
+        SpawnEnemies();
+    }
+
+    private void Init()
+    {
+        floorTile=properties.floorPrefab;
+        wallTile=properties.wallPrefab;
+        levelWidth=properties.levelWidth; 
+        levelHeight=properties.levelHeight;
+        percentToFill = properties.percentToFill;
+        chanceWalkerChangeDir = properties.chanceWalkerChangeDir;
+        chanceWalkerSpawn = properties.chanceWalkerSpawn;
+        chanceWalkerDestoy = properties.chanceWalkerDestroy; 
+        maxWalkers = properties.maxWalkers;
+        iterationSteps = properties.iterationSteps;
+        player = properties.playerObject;
+        enemyTypes = properties.enemyTypes;
+        amountOfEnemies = properties.amountOfEnemies;
     }
 
     //set up the walker alorithm
-    void Setup()
+    private void Setup()
     {
         // prepare grid
         grid = new LevelTile[levelWidth, levelHeight];
@@ -94,7 +117,7 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //choose a new random direction for a walker
-    Vector2 RandomDirection()
+    private Vector2 RandomDirection()
     {
         int choice = Mathf.FloorToInt(Random.value * 3.99f);
         switch (choice)
@@ -110,15 +133,17 @@ public class LevelGeneration : MonoBehaviour
         }
     }
     //creates floor on the grid
-    void CreateFloors()
+    private void CreateFloors()
     {
         int iterations = 0;
+        floorSpaces = new List<Vector3Int>();
         do
         {
             //create floor at position of every Walker
             foreach (RandomWalker walker in walkers)
             {
                 grid[(int)walker.Pos.x, (int)walker.Pos.y] = LevelTile.Floor;
+                floorSpaces.Add(new Vector3Int((int)walker.Pos.x, (int)walker.Pos.y, 0));
             }
 
             //chance: destroy Walker
@@ -183,7 +208,7 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //returns the number of floor tiles on the stage
-    int NumberOfFloors()
+    private int NumberOfFloors()
     {
         int count = 0;
         foreach (LevelTile space in grid)
@@ -197,7 +222,7 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //create walls around floors 
-    void CreateWalls()
+    private void CreateWalls()
     {
         for (int x = 0; x < levelWidth; x++)
         {
@@ -209,7 +234,7 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //spawn floor and wall prefabs in place of floor and wall tiles
-    void SpawnLevel()
+    private void SpawnLevel()
     {
         for (int x = 0; x < levelWidth; x++)
         {
@@ -236,7 +261,7 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //spawn a border around level to prevent falling out of the map
-    void SpawnBorder()
+    private void SpawnBorder()
     {
         //create a square of walls around map
         for (int i = -1; i < levelWidth+1; i++)
@@ -263,20 +288,36 @@ public class LevelGeneration : MonoBehaviour
     }
 
     //spawn player in the center of stage
-    void SpawnPlayer()
+    private void SpawnPlayer()
     {
-        Vector3 pos = new Vector3(Mathf.RoundToInt(levelWidth / 2.0f),
+        playerPos = new Vector3(Mathf.RoundToInt(levelWidth / 2.0f),
                                         Mathf.RoundToInt(levelHeight / 2.0f));
         GameObject playerObj = Instantiate(player, Vector3.zero, Quaternion.identity);
-        GameObject testEnemy = Instantiate(tmp, pos, Quaternion.identity);
-        playerObj.transform.GetChild(1).localPosition = pos;
+        //GameObject testEnemy = Instantiate(tmp, pos, Quaternion.identity);
+        playerObj.transform.GetChild(1).localPosition = playerPos;
         grid[levelWidth / 2, levelHeight / 2] = LevelTile.Player;
         CinemachineVirtualCamera vCam = virtualCamera.GetComponent<CinemachineVirtualCamera>();
         vCam.m_Follow = playerObj.transform.GetChild(0);
     }
 
+    private void SpawnEnemies()
+    {
+        floorSpaces = floorSpaces.Distinct().ToList();
+        for (int i = 0; i < amountOfEnemies; i++)
+        {
+            Vector3Int pos;
+            do
+            {
+                pos = floorSpaces[Random.Range(0, floorSpaces.Count)];
+            } while (grid[pos.x, pos.y] != LevelTile.Floor || Vector3.Distance(pos, playerPos) <= 5);
+
+            GameObject enemyObj = Instantiate(enemyTypes[Random.Range(0, enemyTypes.Count)], pos, Quaternion.identity);
+            grid[pos.x, pos.y] = LevelTile.Enemy;
+        }
+    }
+
     //spawn an object in certain location
-    void Spawn(float x, float y, GameObject toSpawn, int code=1111)
+    private void Spawn(float x, float y, GameObject toSpawn, int code=1111)
     {
         GameObject newObject = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity);
         newObject.transform.parent = mapObject.transform;
