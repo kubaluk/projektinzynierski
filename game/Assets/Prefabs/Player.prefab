@@ -235,10 +235,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5216513793826294500}
   - component: {fileID: 7061539859526143227}
-  - component: {fileID: 8351013051434926002}
+  - component: {fileID: 1585398116105182022}
   - component: {fileID: 3712654402354363450}
   - component: {fileID: 4260138767397064129}
   - component: {fileID: 1832111462040154964}
+  - component: {fileID: 5725982903709418698}
   - component: {fileID: 2433948259984169898}
   - component: {fileID: 5831842451371431192}
   m_Layer: 7
@@ -275,7 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc21f44bc348244a76120e51489422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
   stats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
   state: 1
   movePoint: {fileID: 2742704528683898910}
@@ -283,7 +283,7 @@ MonoBehaviour:
   swapTime: 0.5
   playerSprite: {fileID: 7566386627926967265}
   targetDistance: 1
---- !u!114 &8351013051434926002
+--- !u!114 &1585398116105182022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4659780289930155260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81090761d47da24f8ad9e716a82982a, type: 3}
+  m_Script: {fileID: 11500000, guid: 052c4a24d4651914190053a1b4dd67d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3712654402354363450
@@ -334,7 +334,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd04aad1c684c1f42a6ea71a1565d592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
+--- !u!114 &5725982903709418698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659780289930155260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2cebabbe1a82479a04bd5e5dc7490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
 --- !u!58 &2433948259984169898
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -558,10 +571,11 @@ GameObject:
   - component: {fileID: 5567153546714637927}
   - component: {fileID: 5170614353074206824}
   - component: {fileID: 661194371295652879}
-  - component: {fileID: 664452835250750800}
+  - component: {fileID: 7693547991337877835}
   - component: {fileID: 5631400002323193822}
+  - component: {fileID: 1811898759903413174}
+  - component: {fileID: 3222134644113264798}
   - component: {fileID: 4271401056051790993}
-  - component: {fileID: 6213086399623977078}
   - component: {fileID: 2131724261851008440}
   m_Layer: 7
   m_Name: FirstCharacter
@@ -597,14 +611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc21f44bc348244a76120e51489422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
   stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
   state: 0
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 4659780289930155260}
   swapTime: 0.5
   playerSprite: {fileID: 18535751926576304}
-  targetDistance: 3
+  targetDistance: 1
 --- !u!114 &661194371295652879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
---- !u!114 &664452835250750800
+--- !u!114 &7693547991337877835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -627,7 +640,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7692085404824383335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5caac6e117f5dc44f914ab722fc8ce16, type: 3}
+  m_Script: {fileID: 11500000, guid: c349cfa672a436047997173199c3e33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5631400002323193822
@@ -644,6 +657,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 429732697648363595}
   projectilePrefab: {fileID: 197748840932008568, guid: fac72da3da4d6df4b9d5135774328496, type: 3}
+--- !u!114 &1811898759903413174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692085404824383335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2cebabbe1a82479a04bd5e5dc7490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo: {fileID: 11400000, guid: 1eb43f8b66bcf624481d685892a94f38, type: 2}
+--- !u!114 &3222134644113264798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692085404824383335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd04aad1c684c1f42a6ea71a1565d592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!58 &4271401056051790993
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -660,19 +699,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.23
---- !u!114 &6213086399623977078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7692085404824383335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd04aad1c684c1f42a6ea71a1565d592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
 --- !u!50 &2131724261851008440
 Rigidbody2D:
   serializedVersion: 4

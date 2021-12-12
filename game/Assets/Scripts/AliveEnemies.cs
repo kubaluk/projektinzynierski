@@ -23,4 +23,9 @@ public class AliveEnemies : ScriptableObject
     {
         Enemies.Remove(enemy);
     }
+
+    public int EnemiesCount()
+    {
+        return Enemies.Count;
+    }
 }

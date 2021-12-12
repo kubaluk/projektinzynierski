@@ -6,8 +6,7 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     private enum PlayerState{Active, Follow, Swap};
-
-    [SerializeField] private PlayerInfo playerInfo;
+    
     [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerState state ;
     [SerializeField] private GameObject movePoint;
@@ -16,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerSprite;
     [SerializeField]private float targetDistance;
 
+    private PlayerInfoController playerInfoController;
     private PlayerState previousState;
     private Vector3 swapStartPos;
     private Renderer spriteRenderer;
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         EventSystem.Current.ONSwapButtonPressed += OnSwapButton;
+        playerInfoController = GetComponent<PlayerInfoController>();
         spriteRenderer = playerSprite.GetComponent<Renderer>();
         attackMode = GetComponent<IAttack>();
         if(state==PlayerState.Active)attackMode.Toggle(true);
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.Active:
                 transform.position = movePoint.transform.position;
-                playerInfo.playerPosition = transform.localPosition;
+                playerInfoController.SetPlayerPosition(transform.localPosition);
                 break;
             case PlayerState.Follow:
                 GetComponent<IMovement>().SetVelocity(GetFollowIntent());

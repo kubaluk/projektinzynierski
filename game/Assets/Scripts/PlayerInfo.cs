@@ -6,4 +6,6 @@ using UnityEngine;
 public class PlayerInfo : ScriptableObject
 {
     public Vector3 playerPosition;
+
+    public float attackDelay;
 }

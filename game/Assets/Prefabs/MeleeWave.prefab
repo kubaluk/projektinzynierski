@@ -152,7 +152,8 @@ MonoBehaviour:
     m_Bits: 256
   animator: {fileID: 2151690335460996817}
   attackPoint: {fileID: 8226945699167477955}
-  tmpRange: 0.25
+  tmpRange: {x: 1, y: 0.5}
+  magic: {fileID: 11400000, guid: 254b5b9a3084d4742ba70e4d503bc45b, type: 2}
 --- !u!1 &7883197191374865353
 GameObject:
   m_ObjectHideFlags: 0

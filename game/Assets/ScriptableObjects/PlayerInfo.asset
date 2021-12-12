@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35a9b2b07e74ee4690fbfe1cd4cd80f, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
-  playerPosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: 13.349953, y: 12.008842, z: 0}
+  attackDelay: 0.5
