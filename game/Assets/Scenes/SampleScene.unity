@@ -482,6 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 442441754}
   - component: {fileID: 442441755}
+  - component: {fileID: 442441756}
   m_Layer: 5
   m_Name: MagicBar
   m_TagString: Untagged
@@ -561,6 +562,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &442441756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442441753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b17fbd1955c7b41ba825c5961f155a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 442441755}
+  magic: {fileID: 11400000, guid: 254b5b9a3084d4742ba70e4d503bc45b, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1488,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8619583, y: 1}
+    m_SensorSize: {x: 1.8770226, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

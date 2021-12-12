@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41f905efb025db40872574aae1b6614, type: 3}
   m_Name: EnemyMockMagic
   m_EditorClassIdentifier: 
-  maxMagicAmount: 0
+  maxMagicAmount: 100
+  magicAmount: 0
