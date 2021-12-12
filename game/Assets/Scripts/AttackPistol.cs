@@ -6,17 +6,27 @@ public class AttackPistol : MonoBehaviour, IAttack
 {
     private bool isActive=true;
 
+    private float attackDelay = 0.5f;
+
+    private PlayerInfoController playerInfoController;
+
+    private void Awake()
+    {
+        playerInfoController = GetComponent<PlayerInfoController>();
+        attackDelay = 0.5f;
+    }
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (isActive)
         {
             Transform attackTransform = GameObject.Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
-            attackTransform.GetComponent<ProjectilePhysics>().Setup(3f, 3, 20f);
+            attackTransform.GetComponent<ProjectilePhysics>().Setup(3f, 3, 20f, 2);
         }
     }
 
     public void Toggle(bool newState)
     {
         isActive = newState;
+        if(newState)playerInfoController.SetAttackDelay(attackDelay);
     }
 }

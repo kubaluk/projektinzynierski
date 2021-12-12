@@ -8,9 +8,17 @@ public class ProjectilePhysics : MonoBehaviour
     int bulletDamage;
 
     [SerializeField] private string[] tagsToInteract;
+
+    [SerializeField] private Magic magic;
     // Start is called before the first frame update
-    public void Setup(float flightTime, int damage, float speed)
+    public void Setup(float flightTime, int damage, float speed, int spendAmount)
     {
+        if (magic.Empty())
+        {
+            Destroy(gameObject);
+            return;
+        }
+        magic.SpendMagic(spendAmount);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
         //add force to an object into certain direction to make it move
