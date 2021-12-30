@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float swapTime;
     [SerializeField] private GameObject playerSprite;
     [SerializeField]private float targetDistance;
+    [SerializeField] private Animator animator;
 
     private PlayerInfoController playerInfoController;
     private PlayerState previousState;
@@ -104,10 +105,14 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.Active:
                 transform.position = movePoint.transform.position;
+                Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                animator.SetFloat("Speed", Mathf.Abs(moveDirection.x)+Mathf.Abs(moveDirection.y));
                 playerInfoController.SetPlayerPosition(transform.localPosition);
                 break;
             case PlayerState.Follow:
-                GetComponent<IMovement>().SetVelocity(GetFollowIntent());
+                Vector3 followIntent = GetFollowIntent();
+                GetComponent<IMovement>().SetVelocity(followIntent);
+                animator.SetFloat("Speed", Mathf.Abs(followIntent.x)+Mathf.Abs(followIntent.y));
                 break;
             case PlayerState.Swap:
                 Swap();

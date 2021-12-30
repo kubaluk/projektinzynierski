@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41f905efb025db40872574aae1b6614, type: 3}
   m_Name: Magic
   m_EditorClassIdentifier: 
-  magicAmount: 100
   maxMagicAmount: 100
-  magicGainAmount: 5
-  magicSpendAmount: 1
+  magicAmount: 100
