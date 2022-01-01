@@ -8,7 +8,7 @@ public class EnemyAttackTurret : MonoBehaviour, IEnemyAttack
     {
         Debug.Log("pow");
         Transform attackTransform = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
-        attackTransform.GetComponent<EnemyProjectilePhysics>().Setup(3f, 3, 20f, 0);
+        attackTransform.GetComponent<EnemyProjectilePhysics>().Setup(3f, 2, 10f, 0);
     }
     
 }

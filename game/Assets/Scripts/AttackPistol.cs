@@ -6,13 +6,10 @@ public class AttackPistol : MonoBehaviour, IAttack
 {
     private bool isActive=true;
 
-    private float attackDelay = 0.5f;
-
-    private PlayerInfoController playerInfoController;
+    private float attackDelay;
 
     private void Awake()
     {
-        playerInfoController = GetComponent<PlayerInfoController>();
         attackDelay = 0.5f;
     }
     public void Attack(Transform aimPoint, Transform projectilePrefab)
@@ -20,13 +17,17 @@ public class AttackPistol : MonoBehaviour, IAttack
         if (isActive)
         {
             Transform attackTransform = GameObject.Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
-            attackTransform.GetComponent<ProjectilePhysics>().Setup(3f, 3, 20f, 2);
+            attackTransform.GetComponent<ProjectilePhysics>().Setup(3f, 4, 20f, 2);
         }
+    }
+
+    public float GetDelay()
+    {
+        return attackDelay;
     }
 
     public void Toggle(bool newState)
     {
         isActive = newState;
-        if(newState)playerInfoController.SetAttackDelay(attackDelay);
     }
 }

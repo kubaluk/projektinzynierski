@@ -6,13 +6,10 @@ public class AttackMachineGun : MonoBehaviour, IAttack
 {
     private bool isActive=true;
 
-    private float attackDelay = 0.1f;
-
-    private PlayerInfoController playerInfoController;
+    private float attackDelay;
 
     private void Awake()
     {
-        playerInfoController = GetComponent<PlayerInfoController>();
         attackDelay = 0.1f;
     }
     public void Attack(Transform aimPoint, Transform projectilePrefab)
@@ -24,13 +21,17 @@ public class AttackMachineGun : MonoBehaviour, IAttack
                 recoil.eulerAngles.z + Random.Range(-10f, 10f));
             Transform attackTransform = GameObject.Instantiate(projectilePrefab, aimPoint.position, recoil);
             attackTransform.localScale += new Vector3(-0.25f, -0.25f, 0);
-            attackTransform.GetComponent<ProjectilePhysics>().Setup(3f, 3, 20f, 1);
+            attackTransform.GetComponent<ProjectilePhysics>().Setup(3f, 2, 15f, 1);
         }
+    }
+
+    public float GetDelay()
+    {
+        return attackDelay;
     }
 
     public void Toggle(bool newState)
     {
         isActive = newState;
-        if(newState)playerInfoController.SetAttackDelay(attackDelay);
     }
 }

@@ -7,5 +7,7 @@ public interface IAttack
     //public void Attack(Vector3 attackPosition, Vector3 attackDirection, Transform projectilePrefab);
     public void Attack(Transform aimPoint, Transform projectilePrefab);
 
+    public float GetDelay();
+
     public void Toggle(bool newState);
 }

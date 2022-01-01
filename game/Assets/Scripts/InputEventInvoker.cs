@@ -29,5 +29,10 @@ public class InputEventInvoker : MonoBehaviour
             EventSystem.Current.AttackButtonPressed();
             currentTime = 0;
         }
+        
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            TimerController.instance.BeginTimer();
+        }
     }
 }

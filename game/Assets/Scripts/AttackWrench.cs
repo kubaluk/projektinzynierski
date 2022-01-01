@@ -7,14 +7,11 @@ public class AttackWrench : MonoBehaviour, IAttack
 {
     private bool isActive=true;
 
-    private float attackDelay = 1f;
-
-    private PlayerInfoController playerInfoController;
+    private float attackDelay;
 
     private void Awake()
     {
-        playerInfoController = GetComponent<PlayerInfoController>();
-        attackDelay = 1f;
+        attackDelay = 0.7f;
     }
 
     public void Attack(Transform aimPoint, Transform projectilePrefab)
@@ -22,12 +19,16 @@ public class AttackWrench : MonoBehaviour, IAttack
         if (!isActive) return;
         var newObject = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
         newObject.transform.localScale = new Vector3(2, 2, 1);
-        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.1f, 1.1f), 3, 1, 10);
+        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.1f, 1.1f), 3, 1, 5);
+    }
+
+    public float GetDelay()
+    {
+        return attackDelay;
     }
 
     public void Toggle(bool newState)
     {
         isActive = newState;
-        if(newState)playerInfoController.SetAttackDelay(attackDelay);
     }
 }

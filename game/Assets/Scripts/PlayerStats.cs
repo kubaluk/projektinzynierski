@@ -10,5 +10,10 @@ public class PlayerStats : ScriptableObject
     public float speed;
     public IAttack CurrentWeapon;
     public bool isActive;
+    public Sprite weaponSprite;
 
+    public void ResetHealth()
+    {
+        health = maxHealth;
+    }
 }

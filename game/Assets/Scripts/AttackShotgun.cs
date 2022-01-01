@@ -8,14 +8,11 @@ public class AttackShotgun : MonoBehaviour, IAttack
 {
     private bool isActive=true;
 
-    private float attackDelay = 1.5f;
-
-    private PlayerInfoController playerInfoController;
+    private float attackDelay;
 
     private void Awake()
     {
-        playerInfoController = GetComponent<PlayerInfoController>();
-        attackDelay = 1.5f;
+        attackDelay = 1.3f;
     }
 
     public void Attack(Transform aimPoint, Transform projectilePrefab)
@@ -36,9 +33,13 @@ public class AttackShotgun : MonoBehaviour, IAttack
         }
     }
 
+    public float GetDelay()
+    {
+        return attackDelay;
+    }
+
     public void Toggle(bool newState)
     {
         isActive = newState;
-        if(newState)playerInfoController.SetAttackDelay(attackDelay);
     }
 }
