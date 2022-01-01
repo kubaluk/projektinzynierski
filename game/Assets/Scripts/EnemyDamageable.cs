@@ -27,7 +27,7 @@ public class EnemyDamageable : MonoBehaviour, IDamageable
         health -= damage;
         StartCoroutine(Highlight());
         if(!waiting)
-            StartCoroutine(HitStop(0.1f));
+            StartCoroutine(HitStop(0.05f));
         StartCoroutine(HitStopCooldown(1f));
         StartCoroutine(WaitForHitStop());
     }

@@ -318,6 +318,7 @@ MonoBehaviour:
   - {fileID: 1002053189}
   - {fileID: 1494492425}
   description: {fileID: 768367543}
+  weaponSprite: {fileID: 21300000, guid: 56e93e19c37537e40b3faba195d74123, type: 3}
 --- !u!114 &63832062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +477,7 @@ MonoBehaviour:
   - {fileID: 1006977839}
   - {fileID: 327272968}
   description: {fileID: 1209693835}
+  weaponSprite: {fileID: 21300000, guid: 194fb56aa49f75040b8ad9cdcfa9bbe3, type: 3}
 --- !u!114 &155696627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,6 +740,7 @@ MonoBehaviour:
   - {fileID: 1006977839}
   - {fileID: 155696627}
   description: {fileID: 1307080920}
+  weaponSprite: {fileID: 21300000, guid: f75da68184d44e941a4addcaeae7a96b, type: 3}
 --- !u!114 &327272970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,6 +2786,7 @@ MonoBehaviour:
   - {fileID: 1494492425}
   - {fileID: 63832058}
   description: {fileID: 713677682}
+  weaponSprite: {fileID: 21300000, guid: 71b8f347cba79614fb38c8bc282a73be, type: 3}
 --- !u!114 &1002053193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2893,6 +2897,7 @@ MonoBehaviour:
   - {fileID: 155696627}
   - {fileID: 327272968}
   description: {fileID: 470638665}
+  weaponSprite: {fileID: 21300000, guid: 003d9abc5bfbd1b47be3fc253e0c44c5, type: 3}
 --- !u!114 &1006977841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4515,6 +4520,7 @@ MonoBehaviour:
   - {fileID: 1002053189}
   - {fileID: 63832058}
   description: {fileID: 1220729645}
+  weaponSprite: {fileID: 21300000, guid: c6f7bfdda23301b48971976a5ce3c52e, type: 3}
 --- !u!114 &1494492429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4876,7 +4882,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675186960}
-  - component: {fileID: 1675186961}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -4905,18 +4910,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1675186961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1675186959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031a4bf33d79b454cac6416c253495c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1703932824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4929,6 +4922,7 @@ GameObject:
   - component: {fileID: 1703932827}
   - component: {fileID: 1703932826}
   - component: {fileID: 1703932825}
+  - component: {fileID: 1703932829}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4965,10 +4959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -5019,6 +5013,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1703932829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703932824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031a4bf33d79b454cac6416c253495c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: 61b8244b6c217ca4c8e95814a77df0ec, type: 2}
 --- !u!1 &1853211591
 GameObject:
   m_ObjectHideFlags: 0
@@ -5101,7 +5108,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1853211594}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1703932829}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: BeginGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1853211594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5398,7 +5417,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1675186961}
+      - m_Target: {fileID: 1703932829}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1

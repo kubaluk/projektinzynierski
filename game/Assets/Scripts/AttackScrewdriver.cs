@@ -6,26 +6,27 @@ public class AttackScrewdriver : MonoBehaviour, IAttack
 {
     private bool isActive=true;
 
-    private float attackDelay = 0.5f;
-
-    private PlayerInfoController playerInfoController;
+    private float attackDelay;
 
     private void Awake()
     {
-        playerInfoController = GetComponent<PlayerInfoController>();
-        attackDelay = 0.5f;
+        attackDelay = 0.3f;
     }
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (!isActive) return;
         var newObject = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
         newObject.transform.localScale = new Vector3(2f, 1f, 1);
-        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.1f, 0.5f), 3, 1, 25);
+        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.1f, 0.5f), 2, 1, 10);
+    }
+
+    public float GetDelay()
+    {
+        return attackDelay;
     }
 
     public void Toggle(bool newState)
     {
         isActive = newState;
-        if(newState)playerInfoController.SetAttackDelay(attackDelay);
     }
 }

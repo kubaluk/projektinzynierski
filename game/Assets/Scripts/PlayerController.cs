@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerSprite;
     [SerializeField]private float targetDistance;
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerStats playerStats;
 
     private PlayerInfoController playerInfoController;
     private PlayerState previousState;
@@ -64,23 +65,32 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.Follow:
                     state = PlayerState.Active;
                     attackMode.Toggle(true);
+                    SetAttackDelay();
                     GetComponent<CircleCollider2D>().enabled = true;
                     stats.isActive = true;
                     break;
             }
         }
     }
-    
-    
+
+    private void SetAttackDelay()
+    {
+        playerInfoController.SetAttackDelay(attackMode.GetDelay());
+    }
     
     // Start is called before the first frame update
     private void Start()
     {
+        playerStats.ResetHealth();
         EventSystem.Current.ONSwapButtonPressed += OnSwapButton;
         playerInfoController = GetComponent<PlayerInfoController>();
         spriteRenderer = playerSprite.GetComponent<Renderer>();
-        attackMode = GetComponent<IAttack>();
-        if(state==PlayerState.Active)attackMode.Toggle(true);
+        attackMode = playerStats.CurrentWeapon;
+        if (state == PlayerState.Active)
+        {
+            SetAttackDelay();
+            attackMode.Toggle(true);
+        }
         else attackMode.Toggle(false);
         t = 0;
     }

@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f80f3b5768c894990b990e9429fda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 3
+  attackCooldown: 2.5
   attackPoint: {fileID: 6897408846122210043}
   projectilePrefab: {fileID: 5212878145007515298, guid: 28f48cf38933a514083eaa75b9f5b43f, type: 3}
 --- !u!114 &5273840555587240257

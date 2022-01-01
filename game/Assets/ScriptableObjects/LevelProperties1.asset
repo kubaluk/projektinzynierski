@@ -15,14 +15,14 @@ MonoBehaviour:
   levelWidth: 30
   levelHeight: 30
   percentToFill: 0.2
-  chanceWalkerChangeDir: 0.5
+  chanceWalkerChangeDir: 0.9
   chanceWalkerSpawn: 0.05
   chanceWalkerDestroy: 0.05
-  maxWalkers: 10
+  maxWalkers: 15
   iterationSteps: 10000
   floorPrefab: {fileID: 5618673769371266985, guid: fba8c7e0e5d8b764b88a3be687a9ebb8, type: 3}
   wallPrefab: {fileID: 6191741904100731896, guid: ab7010169f3662349aa59b65d42ce18f, type: 3}
   playerObject: {fileID: 7169827110085070149, guid: b13715ab8886a0144a58e64a819108ef, type: 3}
-  amountOfEnemies: 10
+  amountOfEnemies: 5
   enemyTypes:
   - {fileID: 3101101942459002416, guid: 4df8e84904d44314f91e65e909b951a6, type: 3}

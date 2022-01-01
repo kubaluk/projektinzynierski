@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41f905efb025db40872574aae1b6614, type: 3}
-  m_Name: Magic
+  m_Script: {fileID: 11500000, guid: fde5ae17879c10146bcbcdedca4588ab, type: 3}
+  m_Name: Score
   m_EditorClassIdentifier: 
-  maxMagicAmount: 50
-  magicAmount: 50
+  score: 0

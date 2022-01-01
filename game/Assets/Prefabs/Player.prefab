@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 960770079
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 56e93e19c37537e40b3faba195d74123, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,7 +183,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2742704528683898910
@@ -262,8 +262,8 @@ MonoBehaviour:
   anchorPoint: {fileID: 6564653877537207039}
   aimPoint: {fileID: 429732697648363595}
   weaponSprite: {fileID: 5646027434531765667}
-  meleeSprite: {fileID: 5198061898530184065}
-  rangedSprite: {fileID: 8037225026210526927}
+  meleeStats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
+  rangedStats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
 --- !u!50 &2825541466849209603
 Rigidbody2D:
   serializedVersion: 4
@@ -395,7 +395,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5216513793826294500}
   - component: {fileID: 7061539859526143227}
-  - component: {fileID: 1585398116105182022}
   - component: {fileID: 3712654402354363450}
   - component: {fileID: 4260138767397064129}
   - component: {fileID: 1832111462040154964}
@@ -444,18 +443,7 @@ MonoBehaviour:
   playerSprite: {fileID: 7566386627926967265}
   targetDistance: 1
   animator: {fileID: 3930665832201249151}
---- !u!114 &1585398116105182022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4659780289930155260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052c4a24d4651914190053a1b4dd67d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
 --- !u!114 &3712654402354363450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 429732697648363595}
   projectilePrefab: {fileID: 736027738783426779, guid: 1604660d65019cc4ab1a44407a47a88c, type: 3}
+  playerStats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
 --- !u!114 &1832111462040154964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +741,6 @@ GameObject:
   - component: {fileID: 5567153546714637927}
   - component: {fileID: 5170614353074206824}
   - component: {fileID: 661194371295652879}
-  - component: {fileID: 7693547991337877835}
   - component: {fileID: 5631400002323193822}
   - component: {fileID: 1811898759903413174}
   - component: {fileID: 3222134644113264798}
@@ -800,6 +788,7 @@ MonoBehaviour:
   playerSprite: {fileID: 18535751926576304}
   targetDistance: 1
   animator: {fileID: 5860098994160683944}
+  playerStats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
 --- !u!114 &661194371295652879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,18 +802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
---- !u!114 &7693547991337877835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7692085404824383335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c349cfa672a436047997173199c3e33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5631400002323193822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,6 +816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 429732697648363595}
   projectilePrefab: {fileID: 197748840932008568, guid: fac72da3da4d6df4b9d5135774328496, type: 3}
+  playerStats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
 --- !u!114 &1811898759903413174
 MonoBehaviour:
   m_ObjectHideFlags: 0
