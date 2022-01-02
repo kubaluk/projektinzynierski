@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
     }
     public void BackToMenu()
     {
+        if (PauseMenu.gameIsPaused)
+        {
+            PauseMenu.gameIsPaused = false;
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene("MainMenu");
     }
 }

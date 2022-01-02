@@ -18,10 +18,10 @@ public class GameEnder : MonoBehaviour
         switch (SceneManager.GetActiveScene().name)
         {
             case "Level1":
-                SceneManager.LoadScene("Scenes/WinScreen");
+                SceneManager.LoadScene("Scenes/Level2");
                 break;
             case "Level2":
-                SceneManager.LoadScene("Scenes/Level3");
+                SceneManager.LoadScene("Scenes/WinScreen");
                 break;
             case "Level3":
                 SceneManager.LoadScene("Scenes/WinScreen");
