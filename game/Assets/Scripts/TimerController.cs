@@ -31,8 +31,8 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         timeCounter.text = "00:00.00";
-        timerGoing = false;
         if (levelTimeLimit.y > 59) levelTimeLimit.y = 59;
+        BeginTimer();
     }
 
     public float GetRemainingTime()

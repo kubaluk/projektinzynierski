@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5467617590443748196}
   - component: {fileID: 5646027434531765667}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 1948972542868391947}
   - component: {fileID: 2825541466849209603}
   - component: {fileID: 7554023446082496301}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429732697648363595}
   - component: {fileID: 7085067579260333829}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AimPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc21f44bc348244a76120e51489422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: b4347174c039bc4478139a6cdbb8b65f, type: 2}
   state: 1
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 7692085404824383335}
@@ -546,7 +545,7 @@ GameObject:
   - component: {fileID: 6564653877537207039}
   - component: {fileID: 2037321808}
   - component: {fileID: 2037321809}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: CameraAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc21f44bc348244a76120e51489422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 9902ee2c14cfd4740954f15db7626201, type: 2}
   state: 0
   movePoint: {fileID: 2742704528683898910}
   otherCharacter: {fileID: 4659780289930155260}

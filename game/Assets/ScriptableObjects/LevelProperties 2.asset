@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a20c85c229e0e04095c2b818ead1b0c, type: 3}
+  m_Name: LevelProperties 2
+  m_EditorClassIdentifier: 
+  levelWidth: 30
+  levelHeight: 30
+  percentToFill: 0.3
+  chanceWalkerChangeDir: 0.1
+  chanceWalkerSpawn: 0.1
+  chanceWalkerDestroy: 0.05
+  maxWalkers: 15
+  iterationSteps: 10000
+  floorPrefab: {fileID: 5618673769371266985, guid: fba8c7e0e5d8b764b88a3be687a9ebb8, type: 3}
+  wallPrefab: {fileID: 6191741904100731896, guid: ab7010169f3662349aa59b65d42ce18f, type: 3}
+  playerObject: {fileID: 7169827110085070149, guid: b13715ab8886a0144a58e64a819108ef, type: 3}
+  amountOfEnemies: 10
+  enemyTypes:
+  - {fileID: 7828813500667149788, guid: f4799e4b2fcf6c0438abdb6e1cda6808, type: 3}
