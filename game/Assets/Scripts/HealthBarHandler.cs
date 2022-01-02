@@ -10,18 +10,25 @@ public class HealthBarHandler : MonoBehaviour
     [SerializeField] private PlayerStats stats;
     [SerializeField] private Image blackoutSquare;
     [SerializeField] private float swapCooldown;
+    private bool previousState;
 
     private float currentCooldown;
     public void Start()
     {
-        EventSystem.Current.ONSwapButtonPressed += SwapBars;
+        //EventSystem.Current.ONSwapButtonPressed += SwapBars;
+        previousState = stats.isActive;
+        slider.maxValue = stats.maxHealth;
         currentCooldown = 0;
     }
 
     public void Update()
     {
-        currentCooldown += Time.deltaTime;
+        //currentCooldown += Time.deltaTime;
         slider.value = stats.health;
+        if (previousState != stats.isActive)
+        {
+            StartCoroutine(FadeBar(stats.isActive));
+        }
     }
 
     public void SetMaxHealth()
@@ -33,16 +40,17 @@ public class HealthBarHandler : MonoBehaviour
     {
         if(currentCooldown>swapCooldown){
             StartCoroutine(FadeBar(stats.isActive));
-            //stats.isActive = !stats.isActive;
+            stats.isActive = !stats.isActive;
             currentCooldown = 0;
         }
     }
 
     private IEnumerator FadeBar(bool isActive, int fadeSpeed = 5)
     {
+        previousState = stats.isActive;
         Color fadeColor = blackoutSquare.color;
         float fadeAmount;
-
+        
         if (!isActive)
         {
             transform.SetAsFirstSibling();

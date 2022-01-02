@@ -40,14 +40,12 @@ public class WeaponChoosing : MonoBehaviour
             description.SetActive(true);
             playerStats.CurrentWeapon = weaponType;
             playerStats.weaponSprite = weaponSprite;
-            Debug.Log(weaponType);
         }
         else
         {
             description.SetActive(false);
             playerStats.CurrentWeapon = null;
             playerStats.weaponSprite = null;
-            Debug.Log(playerStats.CurrentWeapon);
         }
     }
 

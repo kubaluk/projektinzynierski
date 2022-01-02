@@ -18,21 +18,29 @@ public class InputEventInvoker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            EventSystem.Current.SwapButtonPressed();
+            EventSystem.Current.PauseButtonPressed();
         }
 
-        if (Input.GetKey(KeyCode.Mouse0)&&currentTime>=playerInfo.attackDelay)
+        if (!PauseMenu.gameIsPaused)
         {
-            EventSystem.Current.AttackButtonPressed();
-            currentTime = 0;
-        }
-        
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            TimerController.instance.BeginTimer();
+            currentTime += Time.deltaTime;
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                EventSystem.Current.SwapButtonPressed();
+            }
+            
+            if (Input.GetKey(KeyCode.Mouse0) && currentTime >= playerInfo.attackDelay)
+            {
+                EventSystem.Current.AttackButtonPressed();
+                currentTime = 0;
+            }
+
+            if (Input.GetKeyUp(KeyCode.L))
+            {
+                TimerController.instance.BeginTimer();
+            }
         }
     }
 }

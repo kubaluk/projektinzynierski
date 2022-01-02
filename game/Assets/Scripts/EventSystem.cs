@@ -12,6 +12,7 @@ public class EventSystem : MonoBehaviour
 
     public event Action ONSwapButtonPressed;
     public event Action ONAttackButtonPressed;
+    public event Action ONPauseButtonPressed;
     public event Action ONGameLost;
     public event Action ONGameWon;
 
@@ -23,6 +24,10 @@ public class EventSystem : MonoBehaviour
     public void AttackButtonPressed()
     {
         ONAttackButtonPressed?.Invoke();
+    }
+    public void PauseButtonPressed()
+    {
+        ONPauseButtonPressed?.Invoke();
     }
     
     public void GameLost()
