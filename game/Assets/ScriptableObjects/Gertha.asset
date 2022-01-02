@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e491424321b0fc45a89cf44622afbaf, type: 3}
   m_Name: Gertha
   m_EditorClassIdentifier: 
-  health: -98
+  health: 6
   maxHealth: 10
   speed: 10
-  isActive: 1
-  weaponSprite: {fileID: 21300000, guid: 194fb56aa49f75040b8ad9cdcfa9bbe3, type: 3}
+  isActive: 0
+  weaponSprite: {fileID: 21300000, guid: f75da68184d44e941a4addcaeae7a96b, type: 3}

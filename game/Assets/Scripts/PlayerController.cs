@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     private enum PlayerState{Active, Follow, Swap};
     
-    [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerState state ;
     [SerializeField] private GameObject movePoint;
     [SerializeField] private GameObject otherCharacter;
@@ -60,14 +59,14 @@ public class PlayerController : MonoBehaviour
                     state = PlayerState.Follow;
                     attackMode.Toggle(false);
                     GetComponent<CircleCollider2D>().enabled = false;
-                    stats.isActive = false;
+                    playerStats.isActive = false;
                     break;
                 case PlayerState.Follow:
                     state = PlayerState.Active;
                     attackMode.Toggle(true);
                     SetAttackDelay();
                     GetComponent<CircleCollider2D>().enabled = true;
-                    stats.isActive = true;
+                    playerStats.isActive = true;
                     break;
             }
         }
@@ -82,10 +81,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerStats.ResetHealth();
+        transform.position = movePoint.transform.position; 
         EventSystem.Current.ONSwapButtonPressed += OnSwapButton;
         playerInfoController = GetComponent<PlayerInfoController>();
         spriteRenderer = playerSprite.GetComponent<Renderer>();
         attackMode = playerStats.CurrentWeapon;
+        playerStats.isActive = state == PlayerState.Active;
         if (state == PlayerState.Active)
         {
             SetAttackDelay();

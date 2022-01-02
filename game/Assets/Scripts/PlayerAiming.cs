@@ -13,14 +13,13 @@ public class PlayerAiming : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
- 
+        weaponSprite.sprite = meleeStats.isActive ? meleeStats.weaponSprite : rangedStats.weaponSprite;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (meleeStats.isActive) weaponSprite.sprite = meleeStats.weaponSprite;
-        else weaponSprite.sprite = rangedStats.weaponSprite;
+        weaponSprite.sprite = meleeStats.isActive ? meleeStats.weaponSprite : rangedStats.weaponSprite;
         Vector3 aimDirection = (anchorPoint.localPosition - this.transform.localPosition).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         if (angle < -90 || angle > 90)
