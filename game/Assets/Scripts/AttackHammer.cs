@@ -17,7 +17,7 @@ public class AttackHammer : MonoBehaviour, IAttack
         if (!isActive) return;
         var newObject = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
         newObject.transform.localScale = new Vector3(3, 3, 1);
-        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.8f, 1.8f), 8, 1, 5);
+        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.8f, 1.8f), 8, 20, 5);
     }
 
     public float GetDelay()

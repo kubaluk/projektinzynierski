@@ -27,7 +27,7 @@ public class SituationEventInvoker : MonoBehaviour
             EventSystem.Current.GameWon();
         }
 
-        if (meleeStats.health <= 0 || rangedStats.health <= 0)
+        if (meleeStats.health <= 0 || rangedStats.health <= 0 && startLevelTimer >= 5)
         {
             EventSystem.Current.GameLost();
         }

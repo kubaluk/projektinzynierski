@@ -21,7 +21,7 @@ public class GameEnder : MonoBehaviour
                 SceneManager.LoadScene("Scenes/Level2");
                 break;
             case "Level2":
-                SceneManager.LoadScene("Scenes/WinScreen");
+                SceneManager.LoadScene("Scenes/Level3");
                 break;
             case "Level3":
                 SceneManager.LoadScene("Scenes/WinScreen");
