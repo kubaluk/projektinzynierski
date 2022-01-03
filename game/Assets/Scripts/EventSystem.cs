@@ -15,6 +15,7 @@ public class EventSystem : MonoBehaviour
     public event Action ONPauseButtonPressed;
     public event Action ONGameLost;
     public event Action ONGameWon;
+    public event Action ONPlayerDamaged;
 
     public void SwapButtonPressed()
     {
@@ -38,5 +39,10 @@ public class EventSystem : MonoBehaviour
     public void GameWon()
     {
         ONGameWon?.Invoke();
+    }
+    
+    public void PlayerDamaged()
+    {
+        ONPlayerDamaged?.Invoke();
     }
 }

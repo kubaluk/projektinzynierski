@@ -26,3 +26,4 @@ MonoBehaviour:
   amountOfEnemies: 5
   enemyTypes:
   - {fileID: 3101101942459002416, guid: 4df8e84904d44314f91e65e909b951a6, type: 3}
+  - {fileID: 7828813500667149788, guid: f4799e4b2fcf6c0438abdb6e1cda6808, type: 3}

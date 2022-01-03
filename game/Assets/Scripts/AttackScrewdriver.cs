@@ -16,8 +16,8 @@ public class AttackScrewdriver : MonoBehaviour, IAttack
     {
         if (!isActive) return;
         var newObject = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
-        newObject.transform.localScale = new Vector3(2f, 1f, 1);
-        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(1.1f, 0.5f), 2, 1, 10);
+        newObject.transform.localScale = new Vector3(1f, 1f, 1);
+        newObject.GetComponent<MeleePhysics>().Setup(new Vector2(0.5f, 0.5f), 2, 3, 10);
     }
 
     public float GetDelay()

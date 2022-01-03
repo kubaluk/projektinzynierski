@@ -8,6 +8,7 @@ public class PlayerDamageable : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
+        EventSystem.Current.PlayerDamaged();
         stats.health -= damage;
     }
 }

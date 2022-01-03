@@ -20,16 +20,18 @@ public class MeleePhysics : MonoBehaviour
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     // Start is called before the first frame update
-    public void Setup(Vector2 range, int damage, float speed, int gainAmount)
+    public void Setup(Vector2 range, int damage, float power, int gainAmount)
     {
         attackRange = range;
         //animator.SetTrigger(Attack);
-        var hitTargets = Physics2D.OverlapBoxAll(transform.position, attackRange, transform.rotation.x ,targetLayers);
+        var hitTargets = Physics2D.OverlapBoxAll(transform.position, attackRange, transform.rotation.z ,targetLayers);
         foreach (var target in hitTargets)
         {
             Debug.Log("test");
             magic.GainMagic(gainAmount);
             target.GetComponent<IDamageable>().TakeDamage(damage);
+            if(!target.CompareTag("Player"))
+                target.GetComponent<EnemyKnockback>().KnockAway(power);
         }
         //destroy a projectile after set time if it doesn't hit anything
         Destroy(gameObject, 1f);
