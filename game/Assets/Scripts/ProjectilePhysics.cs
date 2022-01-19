@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handles ranged projectile physics
 public class ProjectilePhysics : MonoBehaviour
 {
     //projectile damage dealt to enemies
@@ -10,7 +11,7 @@ public class ProjectilePhysics : MonoBehaviour
     [SerializeField] private string[] tagsToInteract;
 
     [SerializeField] private Magic magic;
-    // Start is called before the first frame update
+    //if there is enough magic, move a projectile towards a certain direction depending on bullet rotation
     public void Setup(float flightTime, int damage, float speed, int spendAmount)
     {
         if (magic.Empty())

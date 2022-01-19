@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//attack type - pistol, standard ranged attack
 public class AttackPistol : MonoBehaviour, IAttack
 {
     private bool isActive=true;
@@ -12,6 +13,7 @@ public class AttackPistol : MonoBehaviour, IAttack
     {
         attackDelay = 0.5f;
     }
+    //create ranged attack prefab in set amount of copies and determine it's angle for recoil, then setup physics
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (isActive)

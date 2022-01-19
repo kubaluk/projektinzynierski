@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handles enemy aiming
 public class EnemyAiming : MonoBehaviour
 {
     [SerializeField] private PlayerInfo playerInfo;
@@ -14,7 +15,7 @@ public class EnemyAiming : MonoBehaviour
         aggro = GetComponent<EnemyAggro>();
     }
 
-    // Update is called once per frame
+    //if aggressive, rotate the enemy towards player
     void Update()
     {
         if (aggro.IsAggressive())

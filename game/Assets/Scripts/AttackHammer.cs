@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//attack type - hammer, slow but strong melee attack
 public class AttackHammer : MonoBehaviour, IAttack
 {
     private bool isActive=true;
@@ -12,6 +13,7 @@ public class AttackHammer : MonoBehaviour, IAttack
     {
         attackDelay = 1.2f;
     }
+    //create melee attack prefab, scale it and setup physics
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (!isActive) return;

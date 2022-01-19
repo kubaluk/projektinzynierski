@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//enemy attack type - turret, shoot a projectile towards player
 public class EnemyAttackTurret : MonoBehaviour, IEnemyAttack
 {
     public void Attack(Transform aimPoint, Transform projectilePrefab)

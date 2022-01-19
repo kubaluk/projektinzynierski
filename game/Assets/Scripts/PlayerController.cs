@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//handles player character state and following the active player character
 public class PlayerController : MonoBehaviour
 {
     private enum PlayerState{Active, Follow, Swap};
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private IAttack attackMode;
     private float t;
     
+    //begins the swapping proccess if the swap button was pressed
     private void OnSwapButton()
     {
         if (state != PlayerState.Swap)
@@ -34,7 +36,8 @@ public class PlayerController : MonoBehaviour
             t = 0;
         }
     }
-
+    
+    //swaps between player characters by moving inactive character towards active position, when swap is complete changes the state
     private void Swap()
     {
         t += Time.deltaTime;
@@ -71,13 +74,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    
+    //sets current attack delay according to attack type
     private void SetAttackDelay()
     {
         playerInfoController.SetAttackDelay(attackMode.GetDelay());
     }
     
-    // Start is called before the first frame update
+    //prepares player character state and delay
     private void Start()
     {
         playerStats.ResetHealth();
@@ -96,6 +100,7 @@ public class PlayerController : MonoBehaviour
         t = 0;
     }
 
+    //determines direction for inactive character to follow
     private Vector3 GetFollowIntent()
     {
         Vector3 intention = Vector3.zero;
@@ -109,7 +114,7 @@ public class PlayerController : MonoBehaviour
         return intention.magnitude < 0.5f ? Vector3.zero : intention.normalized;
     }
 
-    // Update is called once per frame
+    //perform different actions depending on state of player character
     private void Update()
     {
         switch (state)

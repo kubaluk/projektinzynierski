@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handle enemy knockback
 public class EnemyKnockback : MonoBehaviour
 {
     [SerializeField] private PlayerInfo playerInfo;
@@ -12,16 +13,11 @@ public class EnemyKnockback : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    //knock the enemy away from player with a set power
     public void KnockAway(float power)
     {
         Vector3 direction = (transform.position - playerInfo.playerPosition).normalized;
         rb.AddForce(direction*power, ForceMode2D.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

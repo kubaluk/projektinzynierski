@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//invokes events that use input from keyboard or mouse
 public class InputEventInvoker : MonoBehaviour
 {
     [SerializeField]
@@ -15,7 +16,7 @@ public class InputEventInvoker : MonoBehaviour
         currentTime = 0f;
     }
         
-    // Update is called once per frame
+    //if game is unpaused, check if buttons were pressed and invoke a correct event
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))

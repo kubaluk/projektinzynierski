@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handle noticing player by enemy if they get too close
 public class EnemyNoticePlayer : MonoBehaviour
 {
     [SerializeField] private float minNoticeDistance;
@@ -25,7 +26,7 @@ public class EnemyNoticePlayer : MonoBehaviour
         aggro = GetComponent<EnemyAggro>();
     }
 
-    // Update is called once per frame
+    //send a raycast towards player, if it hits player, change the aggro to true, if player is very far change the aggro to false
     void Update()
     {
         playerLocation = playerInfo.playerPosition;

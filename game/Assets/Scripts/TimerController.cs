@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//handles level timer
 public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
@@ -27,7 +28,7 @@ public class TimerController : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
+    //sets the timer and starts it
     void Start()
     {
         timeCounter.text = "00:00.00";
@@ -35,11 +36,13 @@ public class TimerController : MonoBehaviour
         BeginTimer();
     }
 
+    //gets remaining time
     public float GetRemainingTime()
     {
         return timeRemaining;
     }
 
+    //starts the timer
     public void BeginTimer()
     {
         timerGoing = true;
@@ -49,6 +52,7 @@ public class TimerController : MonoBehaviour
         StartCoroutine(UpdateTimer());
     }
 
+    //updates the timer
     private IEnumerator UpdateTimer()
     {
         while (timerGoing)
@@ -68,14 +72,10 @@ public class TimerController : MonoBehaviour
         }
     }
 
+    //stops the timer
     public void StopTimer()
     {
         timerGoing = false;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

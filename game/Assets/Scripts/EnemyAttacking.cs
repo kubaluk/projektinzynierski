@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//class responsible for handling enemy attacking
 public class EnemyAttacking : MonoBehaviour
 {
     [SerializeField] private float attackCooldown;
@@ -15,7 +16,7 @@ public class EnemyAttacking : MonoBehaviour
     private IEnemyAttack attackType;
 
     private float attackTimer;
-    // Start is called before the first frame update
+    //start the cooldown timer
     void Start()
     {
         attackTimer = 0f;
@@ -23,7 +24,7 @@ public class EnemyAttacking : MonoBehaviour
         aggro = GetComponent<EnemyAggro>();
     }
 
-    // Update is called once per frame
+    //if aggressive, attack towards player if the attack cooldown passed and reset cooldown timer
     void Update()
     {
         if (aggro.IsAggressive())

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//class responsible for handling enemy taking damage
 public class EnemyDamageable : MonoBehaviour, IDamageable
 {
     [SerializeField] private int maxHealth;
@@ -21,7 +22,7 @@ public class EnemyDamageable : MonoBehaviour, IDamageable
         currentTime = 0;
         waiting = false;
     }
-
+    //highlight enemy, make a hit stop and check if enemy is killed
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -31,21 +32,21 @@ public class EnemyDamageable : MonoBehaviour, IDamageable
         StartCoroutine(HitStopCooldown(1f));
         StartCoroutine(WaitForHitStop());
     }
-
+    //highlight enemy for a split second to indicate hit
     private IEnumerator Highlight()
     {
         hitObject.enabled = true;
         yield return new WaitForSeconds(blinkTime);
         hitObject.enabled = false;
     }
-
+    //stop time for a split second for hit effect
     private IEnumerator HitStop(float duration)
     {
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1;
     }
-
+    //check if hit stop has passed to check if enemy got killed
     private IEnumerator WaitForHitStop()
     {
         while (Time.timeScale != 1.0f) yield return null;
@@ -54,7 +55,7 @@ public class EnemyDamageable : MonoBehaviour, IDamageable
             GetComponent<IKillable>().Kill();
         }
     }
-
+    //limit hit stops to not lag the game
     private IEnumerator HitStopCooldown(float duration)
     {
         waiting = true;

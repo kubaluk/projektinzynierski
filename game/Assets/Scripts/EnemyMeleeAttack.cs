@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//enemy attack type - melee
 public class EnemyMeleeAttack : MonoBehaviour, IEnemyAttack
 {
+    //create a melee attack prefab, scale it and setup physics
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         var newObject = Instantiate(projectilePrefab, aimPoint.position, aimPoint.rotation);
