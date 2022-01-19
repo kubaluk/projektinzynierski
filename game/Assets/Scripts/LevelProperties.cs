@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+//level properties Scriptable Object for level generator fields
 [CreateAssetMenu(fileName = "LevelProperties", menuName = "ScriptableObjects/LevelProperties", order = 4)]
 public class LevelProperties : ScriptableObject
 {

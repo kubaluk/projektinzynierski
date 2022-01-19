@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//attack type - wrench, standard melee attack
 public class AttackWrench : MonoBehaviour, IAttack
 {
     private bool isActive=true;
@@ -13,7 +14,7 @@ public class AttackWrench : MonoBehaviour, IAttack
     {
         attackDelay = 0.7f;
     }
-
+    //create melee attack prefab, scale it and setup physics
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (!isActive) return;

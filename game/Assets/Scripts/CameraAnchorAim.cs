@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//class responsible for setting camera anchor position related to player object and cursor position
 public class CameraAnchorAim : MonoBehaviour, ICameraAnchor
 {
     //object that should be followed by camera

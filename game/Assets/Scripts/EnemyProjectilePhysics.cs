@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handles enemy projectile physics
 public class EnemyProjectilePhysics : MonoBehaviour
 {
     //projectile damage dealt to enemies
@@ -9,7 +10,7 @@ public class EnemyProjectilePhysics : MonoBehaviour
 
     [SerializeField] private string[] tagsToInteract;
 
-    // Start is called before the first frame update
+    //moves the projectile for set amount of seconds in set direction according to projectile rotation
     public void Setup(float flightTime, int damage, float speed, int spendAmount)
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

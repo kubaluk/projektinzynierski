@@ -2,18 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//enemy type - chaser
 public class EnemyChaser : MonoBehaviour, IEnemy
 {
     [SerializeField] private AliveEnemies aliveEnemies;
-    // Start is called before the first frame update
+    //register enemy on enemy list
     void Start()
     {
         aliveEnemies.RegisterEnemy(this);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+//class responsible for invoking events
 public class EventSystem : MonoBehaviour
 {
     public static EventSystem Current;
@@ -17,30 +18,37 @@ public class EventSystem : MonoBehaviour
     public event Action ONGameWon;
     public event Action ONPlayerDamaged;
 
+    //invoke event if swap button was pressed
     public void SwapButtonPressed()
     {
         ONSwapButtonPressed?.Invoke();
     }
 
+    //invoke event if attack button was pressed
     public void AttackButtonPressed()
     {
         ONAttackButtonPressed?.Invoke();
     }
+    
+    //invoke event if pause button was pressed
     public void PauseButtonPressed()
     {
         ONPauseButtonPressed?.Invoke();
     }
     
+    //invoke event if game was lost
     public void GameLost()
     {
         ONGameLost?.Invoke();
     }
     
+    //invoke event if game was won
     public void GameWon()
     {
         ONGameWon?.Invoke();
     }
     
+    //invoke event if player got damaged
     public void PlayerDamaged()
     {
         ONPlayerDamaged?.Invoke();

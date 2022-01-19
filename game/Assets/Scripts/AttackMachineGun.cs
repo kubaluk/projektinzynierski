@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//attack type - machine gun, rapid but inaccurate ranged attack
 public class AttackMachineGun : MonoBehaviour, IAttack
 {
     private bool isActive=true;
@@ -12,6 +13,7 @@ public class AttackMachineGun : MonoBehaviour, IAttack
     {
         attackDelay = 0.1f;
     }
+    //create ranged attack prefab in set amount of copies and determine it's angle for recoil, then setup physics
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (isActive)

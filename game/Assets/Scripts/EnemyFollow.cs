@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//enemy following player
 public class EnemyFollow : MonoBehaviour
 {
     private EnemyAggro aggro;
@@ -10,6 +11,7 @@ public class EnemyFollow : MonoBehaviour
 
     [SerializeField] private float targetDistance;
     
+    //determine the move direction and strength according to player position
     private Vector3 GetFollowIntent()
     {
         Vector3 intention = Vector3.zero;
@@ -29,7 +31,7 @@ public class EnemyFollow : MonoBehaviour
         aggro = GetComponent<EnemyAggro>();
     }
 
-    // Update is called once per frame
+    //move towards the target
     void Update()
     {
         if (aggro.IsAggressive())

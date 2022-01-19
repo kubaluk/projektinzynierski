@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//handles player character health bar
 public class HealthBarHandler : MonoBehaviour
 {
     [SerializeField] private Slider slider;
@@ -12,15 +13,15 @@ public class HealthBarHandler : MonoBehaviour
     [SerializeField] private float swapCooldown;
     private bool previousState;
 
-    private float currentCooldown;
+    //sets the activity for health bar and sets the bar scale according to max health
     public void Start()
     {
         //EventSystem.Current.ONSwapButtonPressed += SwapBars;
         previousState = stats.isActive;
         slider.maxValue = stats.maxHealth;
-        currentCooldown = 0;
     }
-
+    
+    //change according to player health and swap bars if the state changes
     public void Update()
     {
         //currentCooldown += Time.deltaTime;
@@ -31,20 +32,7 @@ public class HealthBarHandler : MonoBehaviour
         }
     }
 
-    public void SetMaxHealth()
-    {
-        slider.value = stats.maxHealth;
-    }
-
-    private void SwapBars()
-    {
-        if(currentCooldown>swapCooldown){
-            StartCoroutine(FadeBar(stats.isActive));
-            stats.isActive = !stats.isActive;
-            currentCooldown = 0;
-        }
-    }
-
+    //fades to black and back to normal according to activity of the character
     private IEnumerator FadeBar(bool isActive, int fadeSpeed = 5)
     {
         previousState = stats.isActive;

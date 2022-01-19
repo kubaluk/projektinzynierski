@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//handles displaying current amount of enemies
 public class TextController : MonoBehaviour
 {
     [SerializeField] private AliveEnemies aliveEnemies;
@@ -14,7 +15,7 @@ public class TextController : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
+    //displays amount of alive enemies
     void Update()
     {
         text.SetText("Enemies left: " + aliveEnemies.EnemiesCount());

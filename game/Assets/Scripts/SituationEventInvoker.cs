@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//invokes events according to game situations
 public class SituationEventInvoker : MonoBehaviour
 {
     [SerializeField] private AliveEnemies aliveEnemies;
@@ -17,7 +18,7 @@ public class SituationEventInvoker : MonoBehaviour
         startLevelTimer = 0;
     }
 
-    // Update is called once per frame
+    //determines if game was won or lost
     void Update()
     {
         if(startLevelTimer<=5)

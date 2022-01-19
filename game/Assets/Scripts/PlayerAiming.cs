@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handles player rotation towards cursor 
 public class PlayerAiming : MonoBehaviour
 {
     [SerializeField] private Transform anchorPoint;
@@ -10,13 +11,13 @@ public class PlayerAiming : MonoBehaviour
     [SerializeField] private PlayerStats meleeStats;
     [SerializeField] private PlayerStats rangedStats;
 
-    // Start is called before the first frame update
+    //set an active weapon sprite
     void Start()
     {
         weaponSprite.sprite = meleeStats.isActive ? meleeStats.weaponSprite : rangedStats.weaponSprite;
     }
 
-    // Update is called once per frame
+    //rotates weapon towards cursor and flip the sprite in case it would be upside down due to rotation
     void Update()
     {
         weaponSprite.sprite = meleeStats.isActive ? meleeStats.weaponSprite : rangedStats.weaponSprite;

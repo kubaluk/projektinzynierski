@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//attack type - screwdriver, rapid but weak melee attack
 public class AttackScrewdriver : MonoBehaviour, IAttack
 {
     private bool isActive=true;
@@ -12,6 +13,7 @@ public class AttackScrewdriver : MonoBehaviour, IAttack
     {
         attackDelay = 0.3f;
     }
+    //create melee attack prefab, scale it and setup physics
     public void Attack(Transform aimPoint, Transform projectilePrefab)
     {
         if (!isActive) return;

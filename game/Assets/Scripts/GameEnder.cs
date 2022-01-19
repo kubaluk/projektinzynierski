@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//handles changing levels and ending the game
 public class GameEnder : MonoBehaviour
 {
     [SerializeField] private Score score;
 
+    //if the game was lost, change the scene to lose screen
     private void LoseGame()
     {
         SceneManager.LoadScene("Scenes/LoseScreen");
     }
 
+    //if the level was won, change the scene according to the current scene
     private void WinGame()
     {
         score.SummarizeLevel(TimerController.instance.GetRemainingTime());
@@ -29,16 +32,11 @@ public class GameEnder : MonoBehaviour
         }
     }
     
-    // Start is called before the first frame update
+    //register event listener for winning and losing game
     void Start()
     {
         EventSystem.Current.ONGameLost += LoseGame;
         EventSystem.Current.ONGameWon += WinGame;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
